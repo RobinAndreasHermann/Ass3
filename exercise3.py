@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python2
+#!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 
 ##############################################
@@ -31,38 +31,39 @@ X, Y are given as lists.
 
 Blockwise application is done outside so please use the whole vectors at once.
 """
-# def correlation(X, Y):
-#     ### YOUR CODE GOES Brrra and a papapapapa! ###
-#
-#     ###calculate mean of X and Y###
-#     #if one list contains more items ignore them
-#     n = min(len(X), len(Y))
-#     mean_x = 0
-#     mean_y = 0
-#     for i in range(0, n-1):
-#         mean_x += X[i]
-#         mean_y += Y[i]
-#     mean_x = mean_x/n
-#     mean_y = mean_y/n
-#
-#     numerator = 0
-#     denominator_one = 0
-#     denominator_two = 0
-#
-#     for i in range(0, n-1):
-#         part_x = X[i] - mean_x
-#         part_y = Y[i] - mean_y
-#
-#         numerator += part_x * part_y
-#         denominator_one += part_x**2
-#         denominator_two += part_y**2
-#
-#     denumerator = math.sqrt(denominator_one * denominator_two)
-#
-#     return numerator/denumerator
-
 def correlation(X, Y):
-    return stats.pearsonr(X, Y)
+     ### YOUR CODE GOES Brrra and a papapapapa! ###
+
+     ###calculate mean of X and Y###
+     #if one list contains more items ignore them
+     n = min(len(X), len(Y))
+     mean_x = 0
+     mean_y = 0
+     for i in range(n):
+         mean_x += X[i]
+         mean_y += Y[i]
+     mean_x = mean_x/n
+     mean_y = mean_y/n
+
+     numerator = 0
+     denominator_one = 0
+     denominator_two = 0
+
+     for i in range(n):
+         part_x = X[i] - mean_x
+         part_y = Y[i] - mean_y
+
+         numerator += part_x * part_y
+         denominator_one += part_x**2
+         denominator_two += part_y**2
+
+     denumerator = math.sqrt(denominator_one * denominator_two)
+     
+     if(denumerator == 0):
+         return numerator
+     return numerator/denumerator
+
+
 """
 Example mean-quantizer.
 """
